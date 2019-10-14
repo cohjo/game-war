@@ -3,17 +3,17 @@ class War { // class names should be capitalized
         this.players = [];
         this.winner = false;
     }
+    
     createPlayer(name) {
         this.players.push(new Player(name));
     }
+
     deal() {
         var d = new Deck(); // creating a new Deck instance and naming it 'd'
         d.createDeck();
         console.log(d); // TESTING IN BROWSER CONSOLE
         d.shuffler();
         console.log(d);
-        // this.player1 = [];
-        // this.player2 = [];
         for(let i = 51, j = 0; i >= 0, j < 26; j++) {
             this.players[0].cards[j] = d.cardArray[i];
             i--;
@@ -23,15 +23,11 @@ class War { // class names should be capitalized
             d.cardArray.pop();
             d.cardArray.pop();
         }
-        // return this.player1, this.player2;
     }
+
     startGame() {
         this.createPlayer('Player 1');
         this.createPlayer('Player 2');
-        
-        // this.players[0].cards = d.slice();
-        // var player1 = new Player("Player1");
-        // var player2 = new Player("Player2");
         this.deal();
         console.log(this.players);
     }
