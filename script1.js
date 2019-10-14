@@ -36,6 +36,8 @@ class War { // class names should be capitalized
                 this.players[1].cards[0].score) {
                     this.players[1].cards.push(this.players[0].cards[0]);
                     this.players[0].cards.shift();
+            } else {
+                this.warMeth();
             }
         } else {
             this.winner = true;
@@ -44,6 +46,23 @@ class War { // class names should be capitalized
             } else {
                 console.log('Player 1 wins!')
             }
+        }
+    }
+
+    warMeth() {
+        if (this.players[0].cards.length < 3 || 
+            this.players[1].cards.length < 3) {
+                this.winner = true
+        } else {
+            if(this.players[0].cards[2] > 
+                this.players[1].cards[2]) {
+                    this.players[0].cards.push(this.players[1].cards[0]);
+                    this.players[0].cards.push(this.players[1].cards[1]);
+                    this.players[0].cards.push(this.players[1].cards[2]);
+                    this.players[1].shift();
+                    this.players[1].shift();
+                    this.players[1].shift();
+                }
         }
     }
 
