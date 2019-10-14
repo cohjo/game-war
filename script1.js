@@ -26,16 +26,51 @@ class War { // class names should be capitalized
         }
     }
 
+    warMeth() {
+        if (this.players[0].cards.length < 3 || 
+            this.players[1].cards.length < 3) {
+                this.winner = true
+        } else {
+            if(this.players[0].cards[2] > 
+                this.players[1].cards[2]) {
+                    this.players[0].cards.push(this.players[1].cards[0]);
+                    this.players[0].cards.push(this.players[1].cards[1]);
+                    this.players[0].cards.push(this.players[1].cards[2]);
+                    this.players[1].cards.shift();
+                    this.players[1].cards.shift();
+                    this.players[1].cards.shift();
+
+                    this.players[0].cards.push(this.players[0].cards.shift());
+                    this.players[0].cards.push(this.players[0].cards.shift());
+                    this.players[0].cards.push(this.players[0].cards.shift());
+            } else if(this.players[1].cards[2] > 
+                this.players[0].cards[2]) {
+                    this.players[1].cards.push(this.players[0].cards[0]);
+                    this.players[1].cards.push(this.players[0].cards[1]);
+                    this.players[1].cards.push(this.players[0].cards[2]);
+                    this.players[0].cards.shift();
+                    this.players[0].cards.shift();
+                    this.players[0].cards.shift();
+
+                    this.players[1].cards.push(this.players[1].cards.shift());
+                    this.players[1].cards.push(this.players[1].cards.shift());
+                    this.players[1].cards.push(this.players[1].cards.shift());
+            }
+        }
+    }
+
     playGame() {
         if (this.players[0].cards.length !== 0 || this.players[0].cards.length !== 0) {
             if (this.players[0].cards[0].score > 
                 this.players[1].cards[0].score) {
                     this.players[0].cards.push(this.players[1].cards[0]);
                     this.players[1].cards.shift();
+                    this.players[0].cards.push(this.players[0].cards.shift());
             } else if (this.players[0].cards[0].score < 
                 this.players[1].cards[0].score) {
                     this.players[1].cards.push(this.players[0].cards[0]);
                     this.players[0].cards.shift();
+                    this.players[1].cards.push(this.players[1].cards.shift());
             } else {
                 this.warMeth();
             }
@@ -49,47 +84,19 @@ class War { // class names should be capitalized
         }
     }
 
-    warMeth() {
-        if (this.players[0].cards.length < 3 || 
-            this.players[1].cards.length < 3) {
-                this.winner = true
-        } else {
-            if(this.players[0].cards[2] > 
-                this.players[1].cards[2]) {
-                    this.players[0].cards.push(this.players[1].cards[0]);
-                    this.players[0].cards.push(this.players[1].cards[1]);
-                    this.players[0].cards.push(this.players[1].cards[2]);
-                    this.players[1].shift();
-                    this.players[1].shift();
-                    this.players[1].shift();
-
-                    this.players[0].push(this.players[0].shift());
-                    this.players[0].push(this.players[0].shift());
-                    this.players[0].push(this.players[0].shift());
-            } else if(this.players[1].cards[2] > 
-                this.players[0].cards[2]) {
-                    this.players[1].cards.push(this.players[0].cards[0]);
-                    this.players[1].cards.push(this.players[0].cards[1]);
-                    this.players[1].cards.push(this.players[0].cards[2]);
-                    this.players[0].shift();
-                    this.players[0].shift();
-                    this.players[0].shift();
-
-                    this.players[1].push(this.players[1].shift());
-                    this.players[1].push(this.players[1].shift());
-                    this.players[1].push(this.players[1].shift());
-
-            }
-        }
-    }
-
     startGame() {
         this.createPlayer('Player 1');
         this.createPlayer('Player 2');
         this.deal();
         console.log(this.players);
-        while (this.winner === false) {
+        // while (this.players[0].cards.length !== 0 ||
+        //     this.players[1].cards.length !== 0) 
+        for(let k = 0; k < 100; k++){
+            
             this.playGame();
+            console.log('ROUND: ' + this.round);
+            console.log(this.players);
+            
             this.round ++;
         }
     }
