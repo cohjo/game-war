@@ -62,7 +62,24 @@ class War { // class names should be capitalized
                     this.players[1].shift();
                     this.players[1].shift();
                     this.players[1].shift();
-                }
+
+                    this.players[0].push(this.players[0].shift());
+                    this.players[0].push(this.players[0].shift());
+                    this.players[0].push(this.players[0].shift());
+            } else if(this.players[1].cards[2] > 
+                this.players[0].cards[2]) {
+                    this.players[1].cards.push(this.players[0].cards[0]);
+                    this.players[1].cards.push(this.players[0].cards[1]);
+                    this.players[1].cards.push(this.players[0].cards[2]);
+                    this.players[0].shift();
+                    this.players[0].shift();
+                    this.players[0].shift();
+
+                    this.players[1].push(this.players[1].shift());
+                    this.players[1].push(this.players[1].shift());
+                    this.players[1].push(this.players[1].shift());
+
+            }
         }
     }
 
