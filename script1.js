@@ -10,6 +10,9 @@ class War { // class names should be capitalized
     console.log(d); // TESTING IN BROWSER CONSOLE
     d.shuffler();
     console.log(d);
+    // var player1 = new Player("Player1");
+    // var player2 = new Player("Player2");
+    d.deal();
     }
 }
     
@@ -18,6 +21,18 @@ class Player {
         this.name = name;
         this.cards = [];
     }
+
+    // deal() {
+    //     if(Player.length === 2) {
+    //         for(let i = 51; i >= 0;) {
+    //             Player[0].cards.push(Deck[i]);
+    //             i--;
+    //             Player[1].cards.push(Deck[i]);
+    //         }
+    //     } else {
+    //         alert("Not enough players!");
+    //     }
+    // }
 }
     
 class Deck {                 
@@ -48,6 +63,20 @@ class Deck {                 
             [this.cardArray[temp], this.cardArray[i]] = [this.cardArray[i], this.cardArray[temp]];
         }
         return this.cardArray;
+    }
+
+    deal() {
+        var player1 = [];
+        var player2 = [];
+        if(Player.length === 2) {
+            for(let i = 51; i >= 0;) {
+                Player[0].cards.push(Deck[i]);
+                i--;
+                Player[1].cards.push(Deck[i]);
+            }
+        } else {
+            alert("Not enough players!");
+        }
     }
 }
 
