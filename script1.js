@@ -29,14 +29,12 @@ class War { // class names should be capitalized
         this.deal();
         console.log(this.players);
         console.log(this.players[0].cards[0].score);
-        while(this.players[0].cards.length > 0 || 
-            this.players[1].cards.length > 0)
 
-            this.playGame();
+        this.playGame();       
     }
 
     warMeth() {
-        if (this.players[0].cards.length < 3 || 
+        if (this.players[0].cards.length < 3 && 
             this.players[1].cards.length < 3) {
                 this.winner = true
         } else {
@@ -69,7 +67,10 @@ class War { // class names should be capitalized
     }
 
     playGame() {
-        if (this.players[0].cards.length !== 0 || this.players[1].cards.length !== 0) {
+        while(this.players[0].cards.length > 0 && 
+            this.players[1].cards.length > 0) {
+
+        if (this.players[0].cards.length !== 0 && this.players[1].cards.length !== 0) {
             if (this.players[0].cards[0].score > 
                 this.players[1].cards[0].score) {
                     this.players[0].cards.push(this.players[1].cards[0]);
@@ -90,7 +91,10 @@ class War { // class names should be capitalized
                 console.log('Player 1 wins!')
             }
         }
+        console.log("ROUND: " +this.round);
         console.log(this.players);
+        this.round++;
+        }
     }
 
 }
