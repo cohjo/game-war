@@ -20,10 +20,17 @@ class War { // class names should be capitalized
             i--;
             this.players[1].cards[j] = d.cardArray[i];
             i--;
-
-            d.cardArray.pop();
-            d.cardArray.pop();
         }
+    }
+
+    startGame() {
+        this.createPlayer('Player 1');
+        this.createPlayer('Player 2');
+        this.deal();
+        console.log(this.players);
+        
+        // this.playGame();
+        // this.playGame();
     }
 
     warMeth() {
@@ -31,8 +38,8 @@ class War { // class names should be capitalized
             this.players[1].cards.length < 3) {
                 this.winner = true
         } else {
-            if(this.players[0].cards[2] > 
-                this.players[1].cards[2]) {
+            if(this.players[0].cards[2].score > 
+                this.players[1].cards[2].score) {
                     this.players[0].cards.push(this.players[1].cards[0]);
                     this.players[0].cards.push(this.players[1].cards[1]);
                     this.players[0].cards.push(this.players[1].cards[2]);
@@ -43,8 +50,8 @@ class War { // class names should be capitalized
                     this.players[0].cards.push(this.players[0].cards.shift());
                     this.players[0].cards.push(this.players[0].cards.shift());
                     this.players[0].cards.push(this.players[0].cards.shift());
-            } else if(this.players[1].cards[2] > 
-                this.players[0].cards[2]) {
+            } else if(this.players[1].cards[2].score > 
+                this.players[0].cards[2].score) {
                     this.players[1].cards.push(this.players[0].cards[0]);
                     this.players[1].cards.push(this.players[0].cards[1]);
                     this.players[1].cards.push(this.players[0].cards[2]);
@@ -75,31 +82,15 @@ class War { // class names should be capitalized
                 this.warMeth();
             }
         } else {
-            this.winner = true;
             if(this.players[0].cards.length === 0) {
                 console.log('Player 2 wins!')
             } else {
                 console.log('Player 1 wins!')
             }
         }
+        console.log(this.players);
     }
 
-    startGame() {
-        this.createPlayer('Player 1');
-        this.createPlayer('Player 2');
-        this.deal();
-        console.log(this.players);
-        // while (this.players[0].cards.length !== 0 ||
-        //     this.players[1].cards.length !== 0) 
-        for(let k = 0; k < 100; k++){
-            
-            this.playGame();
-            console.log('ROUND: ' + this.round);
-            console.log(this.players);
-            
-            this.round ++;
-        }
-    }
 }
     
 class Player {
