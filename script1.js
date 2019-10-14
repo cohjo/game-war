@@ -1,43 +1,54 @@
 class War { // class names should be capitalized
     constructor() {
-    this.players = 2;
-    this.winner = false;
+        this.players = [];
+        this.winner = false;
     }
-    // war methods such as 'startGame()' or 'createPlayers()' or 'playRound()'
+    createPlayer(name) {
+        this.players.push(new Player(name));
+    }
+    deal() {
+        var d = new Deck(); // creating a new Deck instance and naming it 'd'
+        d.createDeck();
+        console.log(d); // TESTING IN BROWSER CONSOLE
+        d.shuffler();
+        console.log(d);
+        // this.player1 = [];
+        // this.player2 = [];
+        for(let i = 51, j = 0; i >= 0, j < 26; j++) {
+            this.players[0].cards[j] = d.cardArray[i];
+            i--;
+            this.players[1].cards[j] = d.cardArray[i];
+            i--;
+
+            d.cardArray.pop();
+            d.cardArray.pop();
+        }
+        // return this.player1, this.player2;
+    }
     startGame() {
-    var d = new Deck(); // creating a new Deck instance and naming it 'd'
-    d.createDeck();
-    console.log(d); // TESTING IN BROWSER CONSOLE
-    d.shuffler();
-    console.log(d);
-    // var player1 = new Player("Player1");
-    // var player2 = new Player("Player2");
-    d.deal();
+        this.createPlayer('Player 1');
+        this.createPlayer('Player 2');
+        
+        // this.players[0].cards = d.slice();
+        // var player1 = new Player("Player1");
+        // var player2 = new Player("Player2");
+        this.deal();
+        console.log(this.players);
     }
 }
     
 class Player {
-    constructor(name, cards) {
+    constructor(name) {
         this.name = name;
         this.cards = [];
     }
-
-    // deal() {
-    //     if(Player.length === 2) {
-    //         for(let i = 51; i >= 0;) {
-    //             Player[0].cards.push(Deck[i]);
-    //             i--;
-    //             Player[1].cards.push(Deck[i]);
-    //         }
-    //     } else {
-    //         alert("Not enough players!");
-    //     }
-    // }
 }
     
 class Deck {                 
     constructor() {          // constructor is for initializing a new Deck instance (** see line 8 **)
         this.cardArray = []; // a property of any Deck class (think of 'this' like 'Deck.cardArray') * see line ___ *
+        this.player1 = [];
+        this.player2 = [];
     }
 
     createDeck() {           // 'createDeck()' makes more sense than 'length()'
@@ -63,20 +74,6 @@ class Deck {                 
             [this.cardArray[temp], this.cardArray[i]] = [this.cardArray[i], this.cardArray[temp]];
         }
         return this.cardArray;
-    }
-
-    deal() {
-        var player1 = [];
-        var player2 = [];
-        if(Player.length === 2) {
-            for(let i = 51; i >= 0;) {
-                Player[0].cards.push(Deck[i]);
-                i--;
-                Player[1].cards.push(Deck[i]);
-            }
-        } else {
-            alert("Not enough players!");
-        }
     }
 }
 
