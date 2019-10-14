@@ -2,6 +2,7 @@ class War { // class names should be capitalized
     constructor() {
         this.players = [];
         this.winner = false;
+        this.round = 0;
     }
 
     createPlayer(name) {
@@ -30,6 +31,17 @@ class War { // class names should be capitalized
         this.createPlayer('Player 2');
         this.deal();
         console.log(this.players);
+        while (this.winner === false) {
+            if (this.players[0].cards[0].score > 
+                this.players[1].cards[0].score) {
+                    this.players[0].cards.push(this.players[1].cards[0]);
+                    this.players[1].cards.shift();
+            } else if (this.players[0].cards[0].score < 
+                this.players[1].cards[0].score) {
+                    this.players[1].cards.push(this.players[0].cards[0]);
+                    this.players[0].cards.shift();
+            }
+        }
     }
 }
     
