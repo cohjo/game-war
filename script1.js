@@ -28,9 +28,11 @@ class War { // class names should be capitalized
         this.createPlayer('Player 2');
         this.deal();
         console.log(this.players);
-        
-        // this.playGame();
-        // this.playGame();
+        console.log(this.players[0].cards[0].score);
+        while(this.players[0].cards.length > 0 || 
+            this.players[1].cards.length > 0)
+
+            this.playGame();
     }
 
     warMeth() {
@@ -67,7 +69,7 @@ class War { // class names should be capitalized
     }
 
     playGame() {
-        if (this.players[0].cards.length !== 0 || this.players[0].cards.length !== 0) {
+        if (this.players[0].cards.length !== 0 || this.players[1].cards.length !== 0) {
             if (this.players[0].cards[0].score > 
                 this.players[1].cards[0].score) {
                     this.players[0].cards.push(this.players[1].cards[0]);
