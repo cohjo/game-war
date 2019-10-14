@@ -2,7 +2,7 @@ class War { // class names should be capitalized
     constructor() {
         this.players = [];
         this.winner = false;
-        this.round = 0;
+        this.round = 1;
     }
 
     createPlayer(name) {
@@ -54,6 +54,7 @@ class War { // class names should be capitalized
         console.log(this.players);
         while (this.winner === false) {
             this.playGame();
+            this.round ++;
         }
     }
 }
