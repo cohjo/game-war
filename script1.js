@@ -27,14 +27,23 @@ class War { // class names should be capitalized
     }
 
     playGame() {
-        if (this.players[0].cards[0].score > 
-            this.players[1].cards[0].score) {
-                this.players[0].cards.push(this.players[1].cards[0]);
-                this.players[1].cards.shift();
-        } else if (this.players[0].cards[0].score < 
-            this.players[1].cards[0].score) {
-                this.players[1].cards.push(this.players[0].cards[0]);
-                this.players[0].cards.shift();
+        if (this.players[0].cards.length !== 0 || this.players[0].cards.length !== 0) {
+            if (this.players[0].cards[0].score > 
+                this.players[1].cards[0].score) {
+                    this.players[0].cards.push(this.players[1].cards[0]);
+                    this.players[1].cards.shift();
+            } else if (this.players[0].cards[0].score < 
+                this.players[1].cards[0].score) {
+                    this.players[1].cards.push(this.players[0].cards[0]);
+                    this.players[0].cards.shift();
+            }
+        } else {
+            this.winner = true;
+            if(this.players[0].cards.length === 0) {
+                console.log('Player 2 wins!')
+            } else {
+                console.log('Player 1 wins!')
+            }
         }
     }
 
