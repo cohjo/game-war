@@ -3,7 +3,7 @@ class War { // class names should be capitalized
         this.players = [];
         this.winner = false;
     }
-    
+
     createPlayer(name) {
         this.players.push(new Player(name));
     }
@@ -41,13 +41,11 @@ class Player {
 }
     
 class Deck {                 
-    constructor() {          // constructor is for initializing a new Deck instance (** see line 8 **)
-        this.cardArray = []; // a property of any Deck class (think of 'this' like 'Deck.cardArray') * see line ___ *
-        this.player1 = [];
-        this.player2 = [];
+    constructor() {
+        this.cardArray = [];
     }
 
-    createDeck() {           // 'createDeck()' makes more sense than 'length()'
+    createDeck() {
         let suit = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
         let rank = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
         let score = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; // I always assume 'Ace' > 'King' (aka 'Ace' = 14)
@@ -55,7 +53,6 @@ class Deck {                 
         for(let i = 0; i < rank.length; i++) {  
             for(let j = 0; j < suit.length; j++) {
                 this.cardArray.push(new Card(suit[j], rank[i], score[i]));
-                    // for example:     new Card('Hearts',  '2'  ,     2   )
             }
         }
     }
@@ -75,7 +72,7 @@ class Deck {                 
 
     
 class Card {
-    constructor(suit, rank, score) { // * see line 30 *     for how to create a new card instance and push it into your cardArray
+    constructor(suit, rank, score) {
         this.suit = suit;
         this.rank = rank;
         this.score = score;
